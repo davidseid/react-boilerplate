@@ -21,6 +21,7 @@ import injectReducer from 'utils/injectReducer';
 import Input from 'components/Input';
 import messages from './messages';
 import reducer from './reducer';
+import { saveEntry } from '../App/actions';
 import { changeEntry } from './actions';
 import { makeSelectEntry } from './selectors';
 
@@ -54,6 +55,11 @@ EntryPage.propTypes = {
 export function mapDispatchToProps(dispatch) {
   return {
     onChangeEntry: (evt) => dispatch(changeEntry(evt.target.value)),
+    onSubmitForm: (evt) => {
+      console.log('this runs!');
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+      dispatch(saveEntry());
+    },
   };
 }
 

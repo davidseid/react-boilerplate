@@ -10,3 +10,6 @@
  */
 
 export const DEFAULT_LOCALE = 'en';
+export const SAVE_ENTRY = 'boilerplate/App/SAVE_ENTRY';
+export const SAVE_ENTRY_SUCCESS = 'boilerplate/App/SAVE_ENTRY_SUCCESS';
+export const SAVE_ENTRY_ERROR = 'boilerplate/App/SAVE_ENTRY_ERROR';
