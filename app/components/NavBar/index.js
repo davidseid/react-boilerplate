@@ -15,6 +15,9 @@ const NavBar = () => (
     <Link to="/">
       <FormattedMessage {...messages.entryPage} />
     </Link>
+    <Link to="/view">
+      <FormattedMessage {...messages.viewPage} />
+    </Link>
   </div>
 );
 
