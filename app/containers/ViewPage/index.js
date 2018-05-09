@@ -11,9 +11,9 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import { makeSelectJournal, makeSelectLoading, makeSelectSaving, makeSelectError } from 'containers/App/selectors';
-// import injectSaga from 'utils/injectSaga';
+import injectSaga from 'utils/injectSaga';
 // import injectReducer from 'utils/injectReducer';
-// import saga from './saga';
+import saga from './saga';
 import { loadJournal } from '../App/actions';
 
 
@@ -55,10 +55,10 @@ const mapStateToProps = createStructuredSelector({
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 // const withReducer = injectReducer({ key: 'viewPage', reducer });
-// const withSaga = injectSaga({ key: 'viewPage', saga });
+const withSaga = injectSaga({ key: 'viewPage', saga });
 
 export default compose(
   // withReducer,
-  // withSaga,
+  withSaga,
   withConnect,
 )(ViewPage);
