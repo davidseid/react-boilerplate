@@ -13,6 +13,30 @@ const app = express();
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
+const storeEntry = require('../db/controllers/storeEntry');
+const fetchEntries = require('../db/controllers/fetchEntries');
+const bodyParser = require('body-parser');
+
+// If you need a backend, e.g. an API, add your custom backend-specific middleware here
+// app.use('/api', myApi);
+app.use('/', (req, res, next) => {
+  console.log(`${req.method} received from ${req.url}`);
+  next();
+});
+
+app.use(bodyParser.json());
+
+app.post('/api/journal', (req, res) => {
+  storeEntry(req.body.entry);
+  res.send(`${req.body.entry} stored in database`);
+});
+
+app.get('/api/journal', (req, res) => {
+  fetchEntries()
+  .then((result) => {
+    res.send(result);
+  });
+});
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
