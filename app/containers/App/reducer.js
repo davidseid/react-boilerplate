@@ -10,7 +10,6 @@ const initialState = fromJS({
   loading: false,
   saving: false,
   error: false,
-  currentEntry: false,
   journal: false,
 });
 
