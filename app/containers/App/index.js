@@ -27,7 +27,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={EntryPage} />
         <Route path="/view" component={ViewPage} />
-        <Route component={NotFoundPage} />
+        <Route path="" component={NotFoundPage} />
       </Switch>
     </CenteredDiv>
   );

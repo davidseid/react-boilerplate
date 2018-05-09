@@ -12,11 +12,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { createStructuredSelector } from 'reselect';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+
+import injectReducer from 'utils/injectReducer';
 
 import Input from 'components/Input';
 import messages from './messages';
+import reducer from './reducer';
+import { changeEntry } from './actions';
+import { makeSelectEntry } from './selectors';
 
-export default class EntryPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class EntryPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
@@ -42,3 +50,22 @@ EntryPage.propTypes = {
   entry: PropTypes.string,
   onChangeEntry: PropTypes.func,
 };
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    onChangeEntry: (evt) => dispatch(changeEntry(evt.target.value)),
+  };
+}
+
+const mapStateToProps = createStructuredSelector({
+  entry: makeSelectEntry(),
+});
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+const withReducer = injectReducer({ key: 'entryPage', reducer });
+
+export default compose(
+  withReducer,
+  withConnect,
+)(EntryPage);
