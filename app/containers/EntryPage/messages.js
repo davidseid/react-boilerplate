@@ -8,6 +8,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.components.EntryPage.header',
-    defaultMessage: 'This is EntryPage component!',
+    defaultMessage: 'Write Journal Entries',
   },
 });

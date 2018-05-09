@@ -20,9 +20,7 @@ export default class EntryPage extends React.PureComponent { // eslint-disable-l
   render() {
     return (
       <div>
-        <h1>
-          <FormattedMessage {...messages.header} />
-        </h1>
+        <FormattedMessage {...messages.header} />
         <form onSubmit={this.props.onSubmitForm}>
           <label htmlFor="entry">
             <Input

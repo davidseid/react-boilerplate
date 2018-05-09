@@ -16,10 +16,12 @@ import { Switch, Route } from 'react-router-dom';
 
 import EntryPage from 'containers/EntryPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import NavBar from 'components/NavBar';
 
 export default function App() {
   return (
     <div>
+      <NavBar />
       <Switch>
         <Route exact path="/" component={EntryPage} />
         <Route component={NotFoundPage} />
