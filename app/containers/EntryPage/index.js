@@ -10,15 +10,37 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+
+import Input from 'components/Input';
 import messages from './messages';
 
-export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class EntryPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
+      <div>
+        <h1>
+          <FormattedMessage {...messages.header} />
+        </h1>
+        <form onSubmit={this.props.onSubmitForm}>
+          <label htmlFor="entry">
+            <Input
+              id="entry"
+              type="text"
+              placeholder="Write a journal entry here..."
+              value={this.props.entry}
+              onChange={this.props.onChangeEntry}
+            />
+          </label>
+        </form>
+      </div>
     );
   }
 }
+
+EntryPage.propTypes = {
+  onSubmitForm: PropTypes.func,
+  entry: PropTypes.string,
+  onChangeEntry: PropTypes.func,
+};
