@@ -19,12 +19,10 @@ function appReducer(state = initialState, action) {
     case SAVE_ENTRY:
       return state
         .set('saving', true)
-        .set('error', false)
-        .set('journal', false);
+        .set('error', false);
     case SAVE_ENTRY_SUCCESS:
       return state
-        .set('saving', false)
-        .set('currentEntry', action.entry);
+        .set('saving', false);
     case SAVE_ENTRY_ERROR:
       return state
         .set('error', action.error)
