@@ -4,6 +4,9 @@ import {
   SAVE_ENTRY_SUCCESS,
   SAVE_ENTRY,
   SAVE_ENTRY_ERROR,
+  LOAD_JOURNAL,
+  LOAD_JOURNAL_SUCCESS,
+  LOAD_JOURNAL_ERROR,
 } from './constants';
 
 const initialState = fromJS({
@@ -26,6 +29,18 @@ function appReducer(state = initialState, action) {
       return state
         .set('error', action.error)
         .set('saving', false);
+    case LOAD_JOURNAL:
+      return state
+        .set('loading', true)
+        .set('error', false);
+    case LOAD_JOURNAL_SUCCESS:
+      return state
+        .set('journal', action.journal)
+        .set('loading', false);
+    case LOAD_JOURNAL_ERROR:
+      return state
+        .set('error', action.error)
+        .set('loading', false);
     default:
       return state;
   }
