@@ -17,10 +17,12 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
 
 import Input from 'components/Input';
 import messages from './messages';
 import reducer from './reducer';
+import saga from './saga';
 import { saveEntry } from '../App/actions';
 import { changeEntry } from './actions';
 import { makeSelectEntry } from './selectors';
@@ -56,7 +58,6 @@ export function mapDispatchToProps(dispatch) {
   return {
     onChangeEntry: (evt) => dispatch(changeEntry(evt.target.value)),
     onSubmitForm: (evt) => {
-      console.log('this runs!');
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(saveEntry());
     },
@@ -70,8 +71,10 @@ const mapStateToProps = createStructuredSelector({
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 const withReducer = injectReducer({ key: 'entryPage', reducer });
+const withSaga = injectSaga({ key: 'entryPage', saga });
 
 export default compose(
   withReducer,
+  withSaga,
   withConnect,
 )(EntryPage);
