@@ -1,11 +1,17 @@
+/**
+*
+* Journal
+*
+*/
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import List from 'components/List';
 import ListItem from 'components/ListItem';
-import JournalEntry from 'containers/JournalEntry';
+import JournalEntry from 'components/JournalEntry';
 
-function Journal({ loading, error, journal }) {
+const Journal = ({ loading, error, journal }) => {
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -22,7 +28,7 @@ function Journal({ loading, error, journal }) {
   }
 
   return null;
-}
+};
 
 Journal.propTypes = {
   loading: PropTypes.bool,
