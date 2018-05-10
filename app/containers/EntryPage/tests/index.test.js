@@ -1,10 +1,9 @@
 import React from 'react';
 import { FormattedMessage, IntlProvider } from 'react-intl';
 import { mount } from 'enzyme';
-// import { mountWithIntl } from 'helpers/intl-enzyme-test-helper';
 
 
-import { EntryPage } from '../index';
+import { EntryPage, mapDispatchToProps } from '../index';
 import messages from '../messages';
 
 describe('<EntryPage />', () => {
@@ -18,11 +17,34 @@ describe('<EntryPage />', () => {
       <FormattedMessage {...messages.header} />
     )).toEqual(true);
   });
+
+  it('should save entry when form submitted', () => {
+    const submitSpy = jest.fn();
+    const renderedComponent = mount(
+      <IntlProvider locale="en">
+        <EntryPage
+          entry="Not empty"
+          onChangeEntry={() => {}}
+          onSubmitForm={submitSpy}
+        />
+      </IntlProvider>
+    );
+    renderedComponent.find('form').simulate('submit');
+    expect(submitSpy).toHaveBeenCalled();
+  });
 });
 
-// should render form
-// should render Input
-// should submit form on enter
+describe('mapDispatchToProps', () => {
+  describe('onChangeEntry', () => {
+    it('should be injected', () => {
+      const dispatch = jest.fn();
+      const result = mapDispatchToProps(dispatch);
+      expect(result.onChangeEntry).toBeDefined();
+    });
+  });
+});
+
+
 // onChangeEntry should be injected
 // changeEntyr should be dispatched
 // onSubmitForm should be injected
