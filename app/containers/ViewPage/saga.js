@@ -9,8 +9,8 @@ export function* fetchJournal() {
 
   try {
     const journal = yield call(axios.get, requestURL, {});
-    console.log(journal);
-    yield put(journalLoaded(journal));
+    console.log(journal.data);
+    yield put(journalLoaded(journal.data));
   } catch (err) {
     yield put(journalLoadingError(err));
   }

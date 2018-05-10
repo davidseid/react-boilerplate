@@ -12,8 +12,10 @@ import { compose } from 'redux';
 
 import { makeSelectJournal, makeSelectLoading, makeSelectSaving, makeSelectError } from 'containers/App/selectors';
 import injectSaga from 'utils/injectSaga';
-// import injectReducer from 'utils/injectReducer';
+import injectReducer from 'utils/injectReducer';
+import Journal from 'components/Journal';
 import saga from './saga';
+import reducer from '../EntryPage/reducer';
 import { loadJournal } from '../App/actions';
 
 
@@ -24,15 +26,30 @@ export class ViewPage extends React.PureComponent { // eslint-disable-line react
   }
 
   render() {
+    const { loading, error, journal } = this.props;
+    const journalProps = {
+      loading,
+      error,
+      journal,
+    };
     return (
       <div>
-        Journal
+        <Journal {...journalProps} />
       </div>
     );
   }
 }
 
 ViewPage.propTypes = {
+  loading: PropTypes.bool,
+  error: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.bool,
+  ]),
+  journal: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.bool,
+  ]),
   onMount: PropTypes.func,
 };
 
@@ -54,11 +71,11 @@ const mapStateToProps = createStructuredSelector({
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-// const withReducer = injectReducer({ key: 'viewPage', reducer });
+const withReducer = injectReducer({ key: 'viewPage', reducer });
 const withSaga = injectSaga({ key: 'viewPage', saga });
 
 export default compose(
-  // withReducer,
+  withReducer,
   withSaga,
   withConnect,
 )(ViewPage);
