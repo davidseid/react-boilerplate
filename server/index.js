@@ -17,8 +17,7 @@ const storeEntry = require('../db/controllers/storeEntry');
 const fetchEntries = require('../db/controllers/fetchEntries');
 const bodyParser = require('body-parser');
 
-// If you need a backend, e.g. an API, add your custom backend-specific middleware here
-// app.use('/api', myApi);
+// Backend Request Handlers
 app.use('/', (req, res, next) => {
   console.log(`${req.method} received from ${req.url}`);
   next();
