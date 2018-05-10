@@ -10,8 +10,7 @@ export function* storeEntry() {
   const requestURL = 'http://localhost:3000/api/journal';
 
   try {
-    const response = yield call(axios.post, requestURL, { entry });
-    console.log(response);
+    yield call(axios.post, requestURL, { entry });
     yield put(entrySaved());
   } catch (err) {
     yield put(entrySavingError(err));

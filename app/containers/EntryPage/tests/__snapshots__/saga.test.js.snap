@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`storeEntry Saga should call the entrySavingError action if the action errors 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "SELECT": Object {
+    "args": Array [],
+    "selector": [Function],
+  },
+}
+`;
+
+exports[`storeEntry Saga should call the entrySavingError action if the action errors 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "http://localhost:3000/api/journal",
+      Object {
+        "entry": "Sample Entry",
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`storeEntry Saga should dispatch the entrySaved action if it saves the data successfully 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "SELECT": Object {
+    "args": Array [],
+    "selector": [Function],
+  },
+}
+`;
+
+exports[`storeEntry Saga should dispatch the entrySaved action if it saves the data successfully 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "http://localhost:3000/api/journal",
+      Object {
+        "entry": "Sample Entry",
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
