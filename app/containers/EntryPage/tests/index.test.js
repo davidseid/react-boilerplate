@@ -1,14 +1,18 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import { shallow } from 'enzyme';
+import { FormattedMessage, IntlProvider } from 'react-intl';
+import { mount } from 'enzyme';
+// import { mountWithIntl } from 'helpers/intl-enzyme-test-helper';
 
-import EntryPage from '../index';
+
+import { EntryPage } from '../index';
 import messages from '../messages';
 
 describe('<EntryPage />', () => {
-  it('should render the page message', () => {
-    const renderedComponent = shallow(
-      <EntryPage />
+  it('should render the entry page header message', () => {
+    const renderedComponent = mount(
+      <IntlProvider locale="en">
+        <EntryPage />
+      </IntlProvider>
     );
     expect(renderedComponent.contains(
       <FormattedMessage {...messages.header} />
@@ -16,7 +20,6 @@ describe('<EntryPage />', () => {
   });
 });
 
-// should render formatted message
 // should render form
 // should render Input
 // should submit form on enter
