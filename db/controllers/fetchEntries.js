@@ -1,4 +1,3 @@
-require('mongoose');
 const { Entry } = require('../models/createDatabase');
 
 module.exports = () => (
