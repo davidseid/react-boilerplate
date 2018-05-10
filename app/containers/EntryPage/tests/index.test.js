@@ -2,6 +2,7 @@ import React from 'react';
 import { FormattedMessage, IntlProvider } from 'react-intl';
 import { mount } from 'enzyme';
 
+import { saveEntry } from 'containers/App/actions';
 import { changeEntry } from '../actions';
 import { EntryPage, mapDispatchToProps } from '../index';
 import messages from '../messages';
@@ -50,11 +51,20 @@ describe('mapDispatchToProps', () => {
       expect(dispatch).toHaveBeenCalledWith(changeEntry(entry));
     });
   });
+
+  describe('onSubmitForm', () => {
+    it('should be injected', () => {
+      const dispatch = jest.fn();
+      const result = mapDispatchToProps(dispatch);
+      expect(result.onSubmitForm).toBeDefined();
+    });
+
+    it('should dispatch saveEntry when called', () => {
+      const dispatch = jest.fn();
+      const result = mapDispatchToProps(dispatch);
+      result.onSubmitForm();
+      expect(dispatch).toHaveBeenCalledWith(saveEntry());
+    });
+  });
 });
-
-
-// onChangeEntry should be injected
-// changeEntyr should be dispatched
-// onSubmitForm should be injected
-// should dispatch
 
