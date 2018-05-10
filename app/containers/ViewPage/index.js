@@ -56,7 +56,6 @@ ViewPage.propTypes = {
 export function mapDispatchToProps(dispatch) {
   return {
     onMount: () => {
-      console.log('the onmount runs');
       dispatch(loadJournal());
     },
   };

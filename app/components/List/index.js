@@ -8,9 +8,10 @@ function List(props) {
   const ComponentToRender = props.component;
   let content = (<div></div>);
 
+  /* eslint-disable no-underscore-dangle */
   if (props.items) {
     content = props.items.map((item, index) => (
-      <ComponentToRender key={Math.random()} item={item} index={index} />
+      <ComponentToRender key={item._id} item={item} index={index} />
     ));
   } else {
     content = (<ComponentToRender />);
