@@ -7,7 +7,7 @@ const Wrapper = styled.li`
   align-items: center;
   position: relative;
   border-top: 1px solid #eee;
-  background-color: ${(props) => props.index % 2 === 0 ? '#E0EDFF' : 'white'};
+  background-color: ${(props) => props.index % 2 === 0 ? '#eff9fb' : 'white'};
   &:first-child {
     border-top: none;
   }

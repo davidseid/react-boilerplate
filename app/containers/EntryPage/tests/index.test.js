@@ -15,3 +15,13 @@ describe('<HomePage />', () => {
     )).toEqual(true);
   });
 });
+
+// should render formatted message
+// should render form
+// should render Input
+// should submit form on enter
+// onChangeEntry should be injected
+// changeEntyr should be dispatched
+// onSubmitForm should be injected
+// should dispatch
+

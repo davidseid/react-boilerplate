@@ -58,8 +58,8 @@ EntryPage.propTypes = {
 export function mapDispatchToProps(dispatch) {
   return {
     onChangeEntry: (evt) => dispatch(changeEntry(evt.target.value)),
-    onSubmitForm: (evt) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    onSubmitForm: () => {
+      // if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(saveEntry());
     },
   };
