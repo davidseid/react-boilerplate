@@ -11,18 +11,11 @@ const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngr
 const resolve = require('path').resolve;
 const app = express();
 
-// If you need a backend, e.g. an API, add your custom backend-specific middleware here
-// app.use('/api', myApi);
 const storeEntry = require('../db/controllers/storeEntry');
 const fetchEntries = require('../db/controllers/fetchEntries');
 const bodyParser = require('body-parser');
 
-// Backend Request Handlers
-app.use('/', (req, res, next) => {
-  console.log(`${req.method} received from ${req.url}`);
-  next();
-});
-
+// Backend Request Handling
 app.use(bodyParser.json());
 
 app.post('/api/journal', (req, res) => {
